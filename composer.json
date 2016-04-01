@@ -1,0 +1,26 @@
+{
+    "name": "waryway/mqtchums",
+    "description": "Website for Home Educaters of Marquette County",
+    "type": "Application",
+	"repositories": [
+        { "type": "vcs",  "url": "https://github.com/Waryway/WebsiteTemplate.git" }
+    ],	
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Kyle Wiering",
+            "email": "kawiering@yahoo.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "autoload": {
+        "psr-4": {
+            "mqtchums\\": "src/"
+        }
+    },
+    "require": {
+        "components/jquery": "^2.2",
+        "twbs/bootstrap": "^3.3",
+        "waryway/website-template": "dev-master"
+    }
+}
