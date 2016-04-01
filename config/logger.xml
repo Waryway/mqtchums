@@ -4,7 +4,7 @@
 			<layout class="LoggerLayoutHtml">
 				<param name="locationInfo" value="true" />
 			</layout>
-			<param name="file" value="C:\Development\OnlineStore\.log\log.html" />
+			<param name="file" value="log.html" />
 			<param name="append" value="true" />
 		</appender>
 		<appender name="default" class="LoggerAppenderFile">
