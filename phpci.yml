@@ -41,8 +41,7 @@ test:
     php_unit:
         config:
           - "phpunit.xml"
-        args:
-          - "--coverage-text"
+        args: "--coverage-text"
 complete:
     clean_build:
         remove:
