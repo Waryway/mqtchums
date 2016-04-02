@@ -41,7 +41,7 @@ test:
     php_unit:
         config:
           - "phpunit.xml"
-        directory: "tests"
+
 complete:
     clean_build:
         remove:
