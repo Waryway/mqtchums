@@ -21,7 +21,7 @@ test:
           - "tests/"
 
     php_code_sniffer:
-        standard: "PSR2"
+        standard: "PSR1"
         allowed_errors: -1
         allowed_warnings: -1
         ignore:

@@ -31,11 +31,13 @@ class IndexTest extends \PHPUnit_Framework_TestCase
         $method->setAccessible(true);
 
         $result = $method->invokeArgs($Index, []);
-        $this->assertEquals('Welcome to MQTCHUMS.org!', $result, 'Expecting a static string response, it should match a static string.');
+        $this->assertEquals('Welcome to MQTCHUMS.org!', $result,
+            'Expecting a static string response, it should match a static string.');
 
 
         $output = $this->getActualOutput();
-        $this->assertContains('Welcome to MQTCHUMS.org!', $output, 'expecting the static string to make it to the screen!');
+        $this->assertContains('Welcome to MQTCHUMS.org!', $output,
+            'expecting the static string to make it to the screen!');
         $this->assertContains('<title>MQTCHUMS</title>', $output, 'Validating the title of the website');
 
     }
