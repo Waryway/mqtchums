@@ -39,7 +39,7 @@ test:
         directory: "src"
 
     php_unit:
-
+        path: "tests"
 complete:
     clean_build:
         remove:
