@@ -22,7 +22,7 @@ class IndexTest extends \PHPUnit_Framework_TestCase
     /**
      * @runInSeparateProcess
      */
-    public function testRenderBodyContent()
+    public function testrenderBodyContent()
     {
         $Index = new \mqtchums\Index();
 

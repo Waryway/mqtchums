@@ -10,13 +10,13 @@ class Index
 
     use \WarywayWebsiteTemplate\traits\Page;
 
-    protected function Configure()
+    protected function configure()
     {
         $this->setPageName('MQTCHUMS');
     }
 
 
-    protected function RenderBodyContent()
+    protected function renderBodyContent()
     {
         return 'Welcome to MQTCHUMS.org!';
     }
