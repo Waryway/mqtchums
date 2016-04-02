@@ -39,9 +39,9 @@ test:
         directory: "src"
 
     php_unit:
-		directory:
+        directory:
             - "tests/"
-		coverage: "tests/logs/coverage"
+        coverage: "tests/logs/coverage"
 complete:
     clean_build:
         remove:
