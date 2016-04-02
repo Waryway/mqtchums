@@ -39,7 +39,9 @@ test:
         directory: "src"
 
     php_unit:
-        directory: "tests"
+        config:
+          - "phpunit.xml"
+        path: "tests"
 complete:
     clean_build:
         remove:
