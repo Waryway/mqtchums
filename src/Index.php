@@ -1,12 +1,13 @@
 <?php
+namespace mqtchums;
 require_once  '..'. DIRECTORY_SEPARATOR . 'vendor'. DIRECTORY_SEPARATOR . 'autoload.php';
 
-mqtchums\config\Configuration::WEBSITE_NAME;
+\mqtchums\config\Configuration::WEBSITE_NAME;
 
 class Index
 {
 
-	use WarywayWebsiteTemplate\traits\Page;
+	use \WarywayWebsiteTemplate\traits\Page;
 	
 	protected function Configure()
 	{
