@@ -1,6 +1,10 @@
 <?php
 namespace mqtchums;
-
+while(!file_exists(getcwd() . DIRECTORY_SEPARATOR . 'vendor' . DIRECTORY_SEPARATOR . 'autoload.php'))
+{
+    chdir('../');
+}
+chdir('src');
 require_once '../'. DIRECTORY_SEPARATOR . 'vendor' . DIRECTORY_SEPARATOR . 'autoload.php';
 
 \mqtchums\config\Configuration::WEBSITE_NAME;
