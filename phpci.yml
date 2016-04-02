@@ -21,7 +21,7 @@ test:
           - "tests/"
 
     php_code_sniffer:
-        standard: "PSR4"
+        standard: "PSR2"
         allowed_errors: -1
         allowed_warnings: -1
         ignore:
@@ -35,14 +35,13 @@ test:
             - "phpunit-bootstrap.php"
             - "phpunit-shutdown.php"
 
-    php_docblock_checker:
-        path: "src"
-
     php_loc:
         directory: "src"
 
     php_unit:
-
+		directory:
+            - "tests/"
+		coverage: "tests/logs/coverage"
 complete:
     clean_build:
         remove:
