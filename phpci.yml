@@ -1,6 +1,6 @@
 build_settings:
     clone_depth: 1
-    verbose: false
+    verbose: true
     ignore:
         - "migrations"
         - "public"
