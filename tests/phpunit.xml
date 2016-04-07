@@ -5,4 +5,7 @@
             <exclude>./vendor</exclude>
         </testsuite>
     </testsuites>
+    <php>
+        <includePath>.</includePath>
+    </php>
 </phpunit>
