@@ -6,6 +6,6 @@
         </testsuite>
     </testsuites>
     <php>
-        <includePath>.</includePath>
+        <includePath>.;src;tests;vendor</includePath>
     </php>
 </phpunit>
