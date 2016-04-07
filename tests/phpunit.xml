@@ -1,11 +1,8 @@
-<phpunit>
+<phpunit bootstrap="bootstrap.php">
     <testsuites>
         <testsuite name="PhpUnit outer Test Suite">
             <directory suffix="Test.php">./</directory>
             <exclude>./vendor</exclude>
         </testsuite>
     </testsuites>
-    <php>
-        <includePath>.;src;tests;vendor</includePath>
-    </php>
 </phpunit>
