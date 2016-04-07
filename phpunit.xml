@@ -1,8 +1,0 @@
-<phpunit>
-    <testsuites>
-        <testsuite name="PhpUnit outer Test Suite">
-            <directory suffix="Test.php">./</directory>
-            <exclude>./vendor</exclude>
-        </testsuite>
-    </testsuites>
-</phpunit>

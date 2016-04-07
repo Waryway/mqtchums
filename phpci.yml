@@ -39,9 +39,7 @@ test:
         directory: "src"
 
     php_unit:
-        config:
-          - "phpunit.xml"
-        args: "--log-json output.json"
+
 complete:
     clean_build:
         remove:
