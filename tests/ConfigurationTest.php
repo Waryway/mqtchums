@@ -8,7 +8,7 @@ require_once 'bootstrap.php';
  * Date: 4/2/2016
  * Time: 11:51 AMPHPUnit_Framework_TestCase
  */
-class ConfigurationTest extends \PHPUnit_Framework_TestCase
+class ConfigurationTest extends PHPUnit_Framework_TestCase
 {
     /**
      * @runInSeparateProcess
