@@ -23,4 +23,5 @@ class vError implements \mqtchums\interfaces\iView
 
     }
 }
+
 ?>

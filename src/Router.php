@@ -7,7 +7,7 @@ class Router
 {
     public function __construct()
     {
-        $this->RouteUrl(ltrim($_SERVER["REQUEST_URI"],'/'));
+        $this->RouteUrl(ltrim($_SERVER["REQUEST_URI"], '/'));
     }
 
     /**
@@ -17,30 +17,25 @@ class Router
      */
     public function RouteUrl($target = "")
     {
-        if($target == "" || is_null($target) )
-        {
+        if ($target == "" || is_null($target)) {
             $target = 'Index';
         }
 
-        $className = 'mqtchums\view\v'.strtoupper(substr($target, 0,1)) . strtolower(substr($target,1));
+        $className = 'mqtchums\view\v' . strtoupper(substr($target, 0, 1)) . strtolower(substr($target, 1));
         $found = false;
-        if(class_exists($className)) {
+        if (class_exists($className)) {
             $implements = class_implements($className);
 
-            foreach($implements as $interface)
-            {
-                if($interface === 'mqtchums\interfaces\iView')
-                {
+            foreach ($implements as $interface) {
+                if ($interface === 'mqtchums\interfaces\iView') {
                     $found = true;
                 }
             }
         }
-        if($found){
+        if ($found) {
             /* @var $view \mqtchums\interfaces\iView */
             $view = new $className();
-        }
-        else
-        {
+        } else {
             $view = new vError(404);
         }
 

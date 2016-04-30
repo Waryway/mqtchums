@@ -5,8 +5,7 @@ class TwigLoader extends \Twig_Environment
 {
     public function __construct()
     {
-        if (!file_exists(__DIR__ . DIRECTORY_SEPARATOR . 'cache'))
-        {
+        if (!file_exists(__DIR__ . DIRECTORY_SEPARATOR . 'cache')) {
             mkdir(__DIR__ . DIRECTORY_SEPARATOR . 'cache');
         }
 
@@ -16,4 +15,5 @@ class TwigLoader extends \Twig_Environment
         ]);
     }
 }
+
 ?>
