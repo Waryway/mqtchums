@@ -5,9 +5,9 @@ interface iView
 {
     public function __construct();
 
-    public function Render();
+    public function render();
 
-    public function LoadTwig();
+    public function loadTwig();
 
 }
 

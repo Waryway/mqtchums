@@ -7,12 +7,12 @@ class vIndex implements \mqtchums\interfaces\iView
 {
     use \mqtchums\traits\Page;
 
-    public function Render()
+    public function render()
     {
-        echo $this->LoadTwig();
+        echo $this->loadTwig();
     }
 
-    public function LoadTwig()
+    public function loadTwig()
     {
         $TwigLoader = new TwigLoader();
 

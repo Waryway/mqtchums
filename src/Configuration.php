@@ -12,7 +12,7 @@ class Configuration
     /**
      * @return string, hard path to the website root.
      */
-    public static function WebsiteRoot()
+    public static function websiteRoot()
     {
         // lazy load the constant
         if (!defined('WEBSITE_ROOT')) {
@@ -28,14 +28,14 @@ class Configuration
         return WEBSITE_ROOT;
     }
 
-    public static function JavascriptDirectory()
+    public static function javascriptDirectory()
     {
-        return self::WebsiteRoot() . DIRECTORY_SEPARATOR . 'javascript';
+        return self::websiteRoot() . DIRECTORY_SEPARATOR . 'javascript';
     }
 
-    public static function CssDirectory()
+    public static function cssDirectory()
     {
-        return self::WebsiteRoot() . DIRECTORY_SEPARATOR . 'css';
+        return self::websiteRoot() . DIRECTORY_SEPARATOR . 'css';
     }
 
 

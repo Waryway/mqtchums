@@ -7,7 +7,7 @@ class Router
 {
     public function __construct()
     {
-        $this->RouteUrl(ltrim($_SERVER["REQUEST_URI"], '/'));
+        $this->routeUrl(ltrim($_SERVER["REQUEST_URI"], '/'));
     }
 
     /**
@@ -15,7 +15,7 @@ class Router
      *
      * @param string $target
      */
-    public function RouteUrl($target = "")
+    public function routeUrl($target = "")
     {
         if ($target == "" || is_null($target)) {
             $target = 'Index';
@@ -39,7 +39,7 @@ class Router
             $view = new vError(404);
         }
 
-        $view->Render();
+        $view->render();
     }
 
 }

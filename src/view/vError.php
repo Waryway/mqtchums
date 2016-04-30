@@ -10,12 +10,12 @@ class vError implements \mqtchums\interfaces\iView
 
     }
 
-    public function Render()
+    public function render()
     {
-        echo $this->LoadTwig();
+        echo $this->loadTwig();
     }
 
-    public function LoadTwig()
+    public function loadTwig()
     {
         $TwigLoader = new TwigLoader();
 
