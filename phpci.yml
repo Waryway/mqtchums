@@ -41,7 +41,7 @@ test:
     php_unit:
             config:
                 - "tests/phpunit.xml"
-            run_from: "/src"
+            run_from: ""
 
 
 complete:
