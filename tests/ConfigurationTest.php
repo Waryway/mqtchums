@@ -1,5 +1,4 @@
 <?php
-namespace mqtchums\tests;
 
 require_once 'bootstrap.php';
 
@@ -7,7 +6,7 @@ require_once 'bootstrap.php';
  * Created by PhpStorm.
  * User: Kyle
  * Date: 4/2/2016
- * Time: 11:51 AM
+ * Time: 11:51 AMPHPUnit_Framework_TestCase
  */
 class ConfigurationTest extends \PHPUnit_Framework_TestCase
 {
