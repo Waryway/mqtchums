@@ -1,7 +1,7 @@
 <?php
 namespace mqtchums\tests;
 
-require_once '../vendor/autoload.php';
+require_once 'bootstrap.php';
 
 /**
  * Created by PhpStorm.
