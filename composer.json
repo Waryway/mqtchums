@@ -24,6 +24,6 @@
     "require": {
         "components/jquery": "^2.2",
         "twbs/bootstrap": "^3.3",
-        "waryway/website-template": "dev-master"
+        "twig/twig": "1.6.5"
     }
 }
