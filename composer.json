@@ -24,6 +24,7 @@
     "require": {
         "components/jquery": "^2.2",
         "twbs/bootstrap": "^3.3",
-        "twig/twig": "1.6.5"
+        "twig/twig": "1.6.5",
+		"facebook/php-sdk-v4" : "~7.0"
     }
 }

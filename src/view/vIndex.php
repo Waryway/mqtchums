@@ -16,7 +16,7 @@ class vIndex implements \mqtchums\interfaces\iView
     {
         $TwigLoader = new TwigLoader();
 
-        return $TwigLoader->render('index.twig', array('the' => 'variables', 'go' => 'here'));
+        return $TwigLoader->render('index.twig', array('the' => 'variables', 'go' => 'here', 'content'=> 'hello'));
     }
 }
 
