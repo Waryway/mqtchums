@@ -1,6 +1,6 @@
 {
     "name": "waryway/mqtchums",
-    "description": "Website for Home Educaters of Marquette County",
+    "description": "Website for Home Educators of Marquette County",
     "type": "Application",
 	"repositories": [
         { "type": "vcs",  "url": "https://github.com/Waryway/WebsiteTemplate.git" }
@@ -24,7 +24,7 @@
     "require": {
         "components/jquery": "^2.2",
         "twbs/bootstrap": "^3.3",
-        "twig/twig": "1.6.5",
-		"facebook/php-sdk-v4" : "~7.0"
+        "twig/twig": "^2",
+        "twig/extensions": "^1.3"
     }
 }
