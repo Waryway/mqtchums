@@ -5,7 +5,7 @@ class Database
 {
     use \mqtchums\traits\Singleton;
     /**
-     * @var PDO
+     * @var \PDO
      */
     public $Db;
 
@@ -16,12 +16,24 @@ class Database
     {
         $this->Db = null;
         try {
-            $this->Db = new PDO('mysql:host=' . Environment::DB_SERVER . ';dbname=' . Environment::DB_DATABASE,
-                Environment::DB_SERVER_USERNAME, Environment::DB_SERVER_PASSWORD);
-        } catch (Exception $e) {
+            $this->Db = new \PDO('mysql:host=' . \mqtchums\Configuration::$DB_SERVER . ';',
+                \mqtchums\Configuration::$DB_SERVER_USERNAME, \mqtchums\Configuration::$DB_SERVER_PASSWORD);
+            $this->InitializeDatabase();
+        } catch (\Exception $e) {
             error_log('Unable to connect to the Database! ' . __CLASS__ . '::' . __METHOD__ . '(' . __LINE__ . ')');
             error_log(print_r($e, true));
             $this->Db = null;
+        }
+    }
+
+    private function InitializeDatabase()
+    {
+
+        if (!$this->Db->exec('use ' . \mqtchums\Configuration::$DB_DATABASE)) {
+            $this->Db->exec('create database ' . \mqtchums\Configuration::$DB_DATABASE);
+            if (!$this->Db->exec('use ' . \mqtchums\Configuration::$DB_DATABASE)) {
+                throw new \Exception('Unable to find or create the ' . \mqtchums\Configuration::$DB_DATABASE);
+            }
         }
     }
 
@@ -56,7 +68,7 @@ class Database
 
         try {
             $result = $statement->execute($params);
-        } catch (Exception $e) {
+        } catch (\Exception $e) {
             error_log('Following Query failed! (');
             error_log($query);
             error_log(') with parameters (');
@@ -67,7 +79,7 @@ class Database
         }
 
         if ($result) {
-            $result = $statement->fetchAll(PDO::FETCH_ASSOC);
+            $result = $statement->fetchAll(\PDO::FETCH_ASSOC);
         }
 
         $statement->closeCursor();

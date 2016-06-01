@@ -50,5 +50,26 @@ h1 {
 
 .navbar a:hover {
 	color: #555;
-}	
+}
 
+
+.mqtchums-calendar {
+	border: 1px solid #2a2730;
+	margin:50px;
+	padding:5px;
+}
+
+
+
+.mqtchums-calendar table {
+	width: 100%;
+}
+
+.mqtchums-calendar table thead {
+	background-color: #fafafa;
+}
+
+.mqtchums-calendar table thead tr th {
+	width: 14%;
+	text-align:center;
+}
