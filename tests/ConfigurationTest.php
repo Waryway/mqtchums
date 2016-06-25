@@ -10,14 +10,14 @@ require_once __DIR__ . DIRECTORY_SEPARATOR . 'bootstrap.php';
  */
 class ConfigurationTest extends PHPUnit_Framework_TestCase
 {
-    /**
-     * @runInSeparateProcess
-     */
-    public function testWebsiteRoot()
-    {
-        $root = \mqtchums\Configuration::websiteRoot();
-        $this->assertEquals(WEBSITE_ROOT, $root, 'The constant must match the definition ('.WEBSITE_ROOT. '!='.$root.')');
-    }
+//    /**
+//     * @runInSeparateProcess
+//     */
+//    public function testWebsiteRoot()
+//    {
+//        $root = \mqtchums\Configuration::websiteRoot();
+//        $this->assertEquals(WEBSITE_ROOT, $root, 'The constant must match the definition ('.WEBSITE_ROOT. '!='.$root.')');
+//    }
 
     public function testJavascriptDirectory()
     {
