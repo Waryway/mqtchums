@@ -10,9 +10,7 @@ require_once __DIR__ . DIRECTORY_SEPARATOR . 'bootstrap.php';
  */
 class ConfigurationTest extends PHPUnit_Framework_TestCase
 {
-    /**
-     * @runInSeparateProcess
-     */
+
     public function testWebsiteRoot()
     {
         $root = \mqtchums\Configuration::websiteRoot();
