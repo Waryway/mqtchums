@@ -13,9 +13,10 @@ trait Page
 
     public function __construct()
     {
-        /** @var $this ->Session \mqtchums\singleton\Session */
-        $this->Session = \mqtchums\singleton\Session::inst();
-        $this->Session->Start();
+        /* @var $Session \mqtchums\singleton\Session */
+        $Session = \mqtchums\singleton\Session::inst();
+        $Session->Start();
+        $this->Session = $Session;
 
         if (!file_exists(Configuration::websiteRoot() . DIRECTORY_SEPARATOR . 'config' . DIRECTORY_SEPARATOR . 'jquery.min.js')) {
             copy(Configuration::websiteRoot() . DIRECTORY_SEPARATOR . 'vendor' . DIRECTORY_SEPARATOR . 'components' . DIRECTORY_SEPARATOR . 'jquery' . DIRECTORY_SEPARATOR . 'jquery.min.js',

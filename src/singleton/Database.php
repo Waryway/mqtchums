@@ -85,17 +85,22 @@ QUERY
      *
      * @return array
      */
-    public function Query($query, array $params)
+    public function Query($query, array $params, $debugQuery = false)
     {
+        $backTrace = debug_backtrace(DEBUG_BACKTRACE_PROVIDE_OBJECT, 2);
+        //$query = '/* ' . $backTrace[1]['class'] .'::' .$backTrace[1]['function'] . '() */ ' . $query;
+
         if ($this->Db === null) {
             $this->Connect();
         }
 
         $params = $this->ParamsToDatabaseTypes($params);
-
-
         $statement = $this->Db->prepare($query);
 
+        if($debugQuery) {
+            $string = 'Query Debug from :'.  $backTrace[0]['class'].'::'. $backTrace[0]['function'] .'() in ' . $backTrace[0]['file'] . '('.$backTrace[0]['line'].')' . PHP_EOL;
+            error_log($string . print_r($this->DebugParams($query, $params), true));
+        }
         try {
             $result = $statement->execute($params);
         } catch (\Exception $e) {
@@ -108,13 +113,14 @@ QUERY
             $result = false;
         }
 
-        if ($result) {
-            $result = $statement->fetchAll(\PDO::FETCH_ASSOC);
+        if ($result === true) {
+            $results = $statement->fetchAll(\PDO::FETCH_ASSOC);
         }
+        else $results = false;
 
         $statement->closeCursor();
 
-        return $result;
+        return $results;
     }
 
     /**
@@ -127,15 +133,42 @@ QUERY
     {
         foreach($params as $key => $param)
         {
-            if(\is_object($param) && (\get_class($param) === '\DateTime'))
+            if(\is_object($param) && (\get_class($param) === 'DateTime'))
             {
                 /* @var $param \DateTime */
 
                 $params[$key] = $param->getTimestamp();
+
             }
         }
 
         return $params;
+    }
+
+
+    /**
+     * @credit mark at manngo dot net via http://php.net/manual/en/pdostatement.debugdumpparams.php
+     *
+     * @param $query
+     * @param $params
+     * @return mixed
+     */
+    private function DebugParams($query,$params) {
+        $indexed = ($params==array_values($params));
+        foreach ($params as $name=>$value) {
+            if(is_string($value))
+            {
+                $value = "'$value'";
+            }
+
+            if($indexed)
+            {
+                $query=preg_replace('/\?/', $value, $query, 1);
+            }
+
+            else $query = str_replace(":$name", $value, $query);
+        }
+        return $query;
     }
 
 }

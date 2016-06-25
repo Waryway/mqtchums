@@ -68,7 +68,12 @@ class Day {
     
     public function BuildEventList(\DateTime $date)
     {
-        $this->eventList = $this->getDatabase()->GetEventList($date);
+        $this->eventList = [];
+        $eventList = $this->getDatabase()->GetEventList($date);
+        foreach($eventList as $item)
+        {
+            $this->eventList[] = new Event($item['name'], $item['description'], $item['starttime'], $item['length']);
+        }
     }
     
 

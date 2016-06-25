@@ -20,11 +20,17 @@ class Database {
 
     public function GetEventList(\DateTime $date)
     {
+        $start = $date;
+        $end = clone($date);
+        $end->add(new \DateInterval('P1D'));
         $query = <<<QUERY
-select * from calendarevent where eventdate = :EventDate;
+select * from calendarevent 
+where starttime >= :Start and starttime < :End 
+order by starttime;
 QUERY;
 
-        return $this->dbConnection->Query($query, [$date]);
+        $result = $this->dbConnection->Query($query, ['Start' => $start , 'End'=> $end]);
+        return $result;
     }
 
     public function GetDayList($month, $year)
@@ -33,14 +39,18 @@ QUERY;
         $endYear = ($endMonth == 1 ? $year +1 : $year);
         $start = new \DateTime($year.'-'.$month.'-'.'01');
         $end = new \DateTime($endYear.'-'.$endMonth.'-'.'01');
+        $dayList = [];
+        $dateAddInterval = new \DateInterval('P1D');
+        $end->sub($dateAddInterval);
 
-        $query = <<<QUERY
-select * from calendarevent 
-where eventdate >= :Start and eventdate < :End 
-order by eventdate;
-QUERY;
+        do
+        {
+            $dayList[$start->format('j')] = new Day($start);
+            $start->add($dateAddInterval);
+            $interval = date_diff($start, $end);
+        } while($interval->invert !==1);
 
-        return $this->dbConnection->Query($query, [$start, $end]);
+        return $dayList;
     }
 }
 ?>
