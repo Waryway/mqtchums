@@ -2,11 +2,33 @@
 namespace mqtchums\calendar;
 
 class Day {
+    /**
+     * @var Database
+     */
+    private $Database;
+
     private $eventList;
+
     /**
      * @var \DateTime
      */
     private $date;
+
+    /**
+     * @param Database $Database
+     */
+    private function setDatabase(Database $Database)
+    {
+        $this->Database = $Database;
+    }
+
+    /**
+     * @return Database
+     */
+    private function getDatabase()
+    {
+        return $this->Database;
+    }
 
     public function setDate($date)
     {
@@ -44,16 +66,17 @@ class Day {
         $this->eventList = [];
     }
     
-    public function BuildEventList()
+    public function BuildEventList(\DateTime $date)
     {
-        Database::
+        $this->eventList = $this->getDatabase()->GetEventList($date);
     }
     
 
     public function __construct(\DateTime $date)
     {
+        $this->setDatabase(new Database());
         $this->setDate($date);
-        $this->
+        $this->BuildEventList($date);
     }
 }
 ?>

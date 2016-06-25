@@ -29,12 +29,39 @@ class Database
     private function InitializeDatabase()
     {
 
-        if (!$this->Db->exec('use ' . \mqtchums\Configuration::$DB_DATABASE)) {
+        if ($this->Db->exec('use ' . \mqtchums\Configuration::$DB_DATABASE) === false) {
+
+            echo 'Creating database '.\mqtchums\Configuration::$DB_DATABASE;
             $this->Db->exec('create database ' . \mqtchums\Configuration::$DB_DATABASE);
-            if (!$this->Db->exec('use ' . \mqtchums\Configuration::$DB_DATABASE)) {
+
+            if ($this->Db->exec('use ' . \mqtchums\Configuration::$DB_DATABASE) === false) {
                 throw new \Exception('Unable to find or create the ' . \mqtchums\Configuration::$DB_DATABASE);
             }
         }
+
+        if(!$this->CheckDbTableExist('calendarevent')){
+            print_r('creating calendar event');
+            $this->Db->exec(<<<QUERY
+CREATE TABLE calendarevent (
+    calendareventid INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    starttime BIGINT, 
+    length INT,
+    name VARCHAR(100),
+    description VARCHAR(200)
+);
+QUERY
+            );
+        }
+    }
+
+    private function CheckDbTableExist($tableName)
+    {
+        $params = [
+            'dbName' => \mqtchums\Configuration::$DB_DATABASE,
+            'tableName' => $tableName
+        ];
+        $result = $this->Query('SELECT * FROM information_schema.tables WHERE table_schema = :dbName AND table_name = :tableName LIMIT 1;', $params);
+        return count($result) === 1;
     }
 
     /**
@@ -64,6 +91,9 @@ class Database
             $this->Connect();
         }
 
+        $params = $this->ParamsToDatabaseTypes($params);
+
+
         $statement = $this->Db->prepare($query);
 
         try {
@@ -86,6 +116,28 @@ class Database
 
         return $result;
     }
+
+    /**
+     * Magically convert known objects to database specific formats.
+     *
+     * @param array $params
+     * @return array
+     */
+    private function ParamsToDatabaseTypes(array $params)
+    {
+        foreach($params as $key => $param)
+        {
+            if(\is_object($param) && (\get_class($param) === '\DateTime'))
+            {
+                /* @var $param \DateTime */
+
+                $params[$key] = $param->getTimestamp();
+            }
+        }
+
+        return $params;
+    }
+
 }
 
 ?>
