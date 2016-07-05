@@ -51,7 +51,7 @@ class Session
         $sessionId = isset($_COOKIE['sessionId']) ? $_COOKIE['sessionId'] : md5(uniqid(rand(), true));
 
         if (!isset($_COOKIE['sessionId'])) {
-            setcookie('sessionId', $sessionId, time() + 60 * 60 * 24);
+            setcookie('sessionId', $sessionId, time() + 60 * 60 * 24, $cookie_path);
 
         } else {
             session_id($sessionId);
@@ -60,7 +60,7 @@ class Session
             session_destroy();
 
             $sessionId = md5(uniqid(rand(), true));
-            setcookie('sessionId', $sessionId, time() + 60 * 60 * 24);
+            setcookie('sessionId', $sessionId, time() + 60 * 60 * 24, $cookie_path);
         }
 
         session_id($sessionId);

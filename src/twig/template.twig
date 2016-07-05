@@ -1,19 +1,28 @@
 <html>
 <head>
-    <link type="text/css" rel="stylesheet" href="../config/bootstrap.min.css"/>
-    <link type="text/css" rel="stylesheet" href="../config/style.css"/>
-    <script src="../config/jquery.min.js"></script>
+    <link type="text/css" rel="stylesheet" href="/config/bootstrap.min.css"/>
+    <link type="text/css" rel="stylesheet" href="/config/style.css"/>
+    <script src="/config/jquery.min.js"></script>
+    <script src="/config/bootstrap.min.js"></script>
 </head>
 <body>
 
-<div class="navbar">
-    <a href="/">MQTCHUMS</a>
-    <span class="navbar-tab-links navbar-right clearfix">
-        <a class="tablink navbar-left btn btn-default" href="/calendar">Calendar</a>
-        <a class="tablink navbar-left btn btn-default" href="/bulletin">Bulletin</a>
-        <a class="tablink navbar-left btn btn-default" href="/about">About</a>
-    </span>
+<div class="collapse" id="exCollapsingNavbar">
+    <div class="bg-inverse p-a-1">
+        <a class="nav-item nav-link btn btn-secondary" role="button" href="/calendar">Calendar</a>
+        <a class="nav-item nav-link btn btn-secondary" role="button" href="/bulletin">Bulletin</a>
+        <a class="nav-item nav-link btn btn-secondary" role="button" href="/about">About</a>
+    </div>
 </div>
+<nav class="navbar navbar-light bg-fade">
+
+    <div class="nav navbar-nav">
+        <a class="nav-item nav-link active" href="/">MQTCHUMS</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#exCollapsingNavbar">
+            &#9776;
+        </button>
+    </div>
+</nav>
 
 {% block content %}
 {% endblock content %}

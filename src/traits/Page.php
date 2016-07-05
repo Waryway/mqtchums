@@ -11,9 +11,15 @@ trait Page
      */
     private $Session;
 
-    public function __construct()
+    /**
+     * @var array
+     */
+    private $args;
+
+    public function __construct(array $args)
     {
-        /* @var $Session \mqtchums\singleton\Session */
+        $this->args = $args;
+        /* @var $this->Session \mqtchums\singleton\Session */
         $Session = \mqtchums\singleton\Session::inst();
         $Session->Start();
         $this->Session = $Session;

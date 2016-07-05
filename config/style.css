@@ -54,12 +54,13 @@ h1 {
 
 
 .mqtchums-calendar {
-	border: 1px solid #2a2730;
-	margin:50px;
 	padding:5px;
 }
 
+.mqtchums-calendar .calendar-control {
+	margin:auto 0px;
 
+}
 
 .mqtchums-calendar table {
 	width: 100%;
@@ -72,4 +73,11 @@ h1 {
 .mqtchums-calendar table thead tr th {
 	width: 14%;
 	text-align:center;
+}
+
+
+.center {
+	float: none;
+	margin-left: auto;
+	margin-right: auto;
 }

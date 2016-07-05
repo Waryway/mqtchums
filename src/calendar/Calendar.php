@@ -96,6 +96,7 @@ class Calendar {
 
     private function BuildDayList($month, $year)
     {
+       
         $this->setDayList($this->getDatabase()->GetDayList($month, $year));
     }
 }

@@ -3,7 +3,7 @@ namespace mqtchums\interfaces;
 
 interface iView
 {
-    public function __construct();
+    public function __construct(array $args);
 
     public function render();
 

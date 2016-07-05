@@ -1,45 +1,170 @@
 {% extends "template.twig" %}
 
 {% block content %}
-<div class="mqtchums-calendar">
-    <table>
-        <thead>
-            <tr><th>Sunday</th><th>Monday</th><th>Tuesday</th><th>Wednesday</th><th>Thursday</th><th>Friday</th><th>Saturday</th></tr>
-        </thead>
-        <tbody>
-            <tr>
-                {% for i in range(1, 7) %}
-                    <td>{{ days[i] }}</td>
-                {% endfor %}
-            </tr>
-            <tr>
-                {% for i in range(8, 14) %}
-                    <td>{{ days[i] }}</td>
-                {% endfor %}
-            </tr>
-            <tr>
-                {% for i in range(15, 21) %}
-                    <td>{{ days[i] }}</td>
-                {% endfor %}
-            </tr>
-            <tr>
-                {% for i in range(22, 28) %}
-                    <td>{{ days[i] }}</td>
-                {% endfor %}
-            </tr>
-            <tr>
-                {% for i in range(29, 35) %}
-                    <td>{{ days[i] }}</td>
-                {% endfor %}
-            </tr>
-            <tr>
-                {% for i in range(36, 42) %}
-                    <td>{{ days[i] }}</td>
-                {% endfor %}
-            </tr>
-
-        </tbody>
-    </table>
+{% set months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'] %}
+<div class="mqtchums-calendar container">
+    <div class="row">
+        <div class="col-sm-3"></div>
+        <div class="col-sm-6">
+            <div class="btn-group" role="group">
+                <a class="btn btn-primary-outline" href="/calendar/CalendarMonth/{{ previousMonth }}/CalendarYear/{{ previousMonthYear }}">Previous Month</a>
+                <div class="btn-group" role="group">
+                    <button id="btnGroupDrop1" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        {{ currentmonth }}
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+                        {% for month in months %}
+                            {% if month == currentmonth %}
+                                <a class="dropdown-item disabled" href="#">{{ month }}</a>
+                            {% else %}
+                                <a class="dropdown-item" href="/calendar/CalendarMonth/{{ month }}">{{ month }}</a>
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                </div>
+                <div class="btn-group" role="group">
+                    <button id="btnGroupDrop2" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        {{ year }}
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="btnGroupDrop2">
+                        {% for i in range(2014, 2020) %}
+                            {% if i == year %}
+                                <a class="dropdown-item disabled" href="#">{{ i }}</a>
+                            {% else %}
+                                <a class="dropdown-item" href="/calendar/CalendarYear/{{ i }}">{{ i }}</a>
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                </div>
+                <a type="button" class="btn btn-primary-outline" href="/calendar/CalendarMonth/{{ nextMonth }}/CalendarYear/{{ nextMonthYear }}">Next Month</a>
+            </div>
+        </div>
+        <div class="col-sm-3"></div>
+    </div>
+    <div class="row">
+        <div class="col-sm-3"></div>
+        <div class="col-sm-1">Sunday</div>
+        <div class="col-sm-1">Monday</div>
+        <div class="col-sm-1">Tuesday</div>
+        <div class="col-sm-1">Wednesday</div>
+        <div class="col-sm-1">Thursday</div>
+        <div class="col-sm-1">Friday</div>
+        <div class="col-sm-1">Saturday</div>
+        <div class="col-sm-2"></div>
+    </div>
+    <div class="row">
+        <div class="col-sm-3"></div>
+        {% for i in range(1, 7) %}
+            {% set events = days[i] %}
+            <div class="col-sm-1">
+                <ul class="list-group">
+                    {% for event in events %}
+                        {% if loop.first %}
+                            <li class="list-group-item active">{{ event }}</li><li class="list-group-item">
+                        {% else %}
+                            {{ event }}
+                        {% endif %}
+                    {% endfor %}
+                    </li>
+                </ul>
+            </div>
+        {% endfor %}
+    </div>
+    <div class="row">
+        <div class="col-sm-3"></div>
+        {% for i in range(8, 14) %}
+            {% set events = days[i] %}
+            <div class="col-sm-1">
+                <ul class="list-group">
+                    {% for event in events %}
+                    {% if loop.first %}
+                    <li class="list-group-item active">{{ event }}</li><li class="list-group-item">
+                        {% else %}
+                            {{ event }}
+                        {% endif %}
+                        {% endfor %}
+                    </li>
+                </ul>
+            </div>
+        {% endfor %}
+        <div class="col-sm-2"></div>
+    </div>
+    <div class="row">
+        <div class="col-sm-3"></div>
+        {% for i in range(15, 21) %}
+            {% set events = days[i] %}
+            <div class="col-sm-1">
+                <ul class="list-group">
+                    {% for event in events %}
+                    {% if loop.first %}
+                    <li class="list-group-item active">{{ event }}</li><li class="list-group-item">
+                        {% else %}
+                            {{ event }}
+                        {% endif %}
+                        {% endfor %}
+                    </li>
+                </ul>
+            </div>
+        {% endfor %}
+        <div class="col-sm-2"></div>
+    </div>
+    <div class="row">
+        <div class="col-sm-3"></div>
+        {% for i in range(22, 28) %}
+            {% set events = days[i] %}
+            <div class="col-sm-1">
+                <ul class="list-group">
+                    {% for event in events %}
+                    {% if loop.first %}
+                    <li class="list-group-item active">{{ event }}</li><li class="list-group-item">
+                        {% else %}
+                            {{ event }}
+                        {% endif %}
+                        {% endfor %}
+                    </li>
+                </ul>
+            </div>
+        {% endfor %}
+        <div class="col-sm-2"></div>
+    </div>
+    <div class="row">
+        <div class="col-sm-3"></div>
+        {% for i in range(29, 35) %}
+            {% set events = days[i] %}
+            <div class="col-sm-1">
+                <ul class="list-group">
+                    {% for event in events %}
+                    {% if loop.first %}
+                    <li class="list-group-item active">{{ event }}</li><li class="list-group-item">
+                        {% else %}
+                            {{ event }}
+                        {% endif %}
+                        {% endfor %}
+                    </li>
+                </ul>
+            </div>
+        {% endfor %}
+        <div class="col-sm-2"></div>
+    </div>
+    <div class="row">
+        <div class="col-sm-3"></div>
+        {% for i in range(36, 42) %}
+            {% set events = days[i] %}
+            <div  class="col-sm-1 ">
+                <ul class="list-group">
+                    {% for event in events %}
+                    {% if loop.first %}
+                    <li class="list-group-item active">{{ event }}</li><li class="list-group-item">
+                        {% else %}
+                            {{ event }}
+                        {% endif %}
+                        {% endfor %}
+                    </li>
+                </ul>
+            </div>
+        {% endfor %}
+        <div class="col-sm-2"></div>
+    </div>
 </div>
 
 

@@ -14,22 +14,30 @@ class Database
      */
     public function Connect()
     {
-        $this->Db = null;
+        //$this->Db = null;
         try {
             $this->Db = new \PDO('mysql:host=' . \mqtchums\Configuration::$DB_SERVER . ';',
                 \mqtchums\Configuration::$DB_SERVER_USERNAME, \mqtchums\Configuration::$DB_SERVER_PASSWORD);
+            $this->Db->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
             $this->InitializeDatabase();
-        } catch (\Exception $e) {
+        } catch (\PDOException $e) {
             error_log('Unable to connect to the Database! ' . __CLASS__ . '::' . __METHOD__ . '(' . __LINE__ . ')');
             error_log(print_r($e, true));
-            $this->Db = null;
+            error_log(print_r(`whoami`, true));
+            //$this->Db = null;
         }
     }
 
     private function InitializeDatabase()
     {
+        try {
+            $connected = $this->Db->exec('use ' . \mqtchums\Configuration::$DB_DATABASE);
+        } catch (\PDOException $e)
+        {
+            $connected = false;
+        }
 
-        if ($this->Db->exec('use ' . \mqtchums\Configuration::$DB_DATABASE) === false) {
+        if ($connected === false) {
 
             echo 'Creating database '.\mqtchums\Configuration::$DB_DATABASE;
             $this->Db->exec('create database ' . \mqtchums\Configuration::$DB_DATABASE);

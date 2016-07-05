@@ -5,7 +5,7 @@ use mqtchums\twig\TwigLoader;
 
 class vError implements \mqtchums\interfaces\iView
 {
-    public function __construct()
+    public function __construct(array $args)
     {
 
     }
