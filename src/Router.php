@@ -9,6 +9,7 @@ class Router
     public function __construct()
     {
         /* @var $session \mqtchums\singleton\Session */
+
         $this->routeUrl(ltrim(urldecode($_SERVER['REQUEST_URI']), '/'));
     }
 
